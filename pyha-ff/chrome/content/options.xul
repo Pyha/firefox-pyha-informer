@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<window id="rootWnd" title="Настройка"
+        onload="initconfig();"
+        oncommand="updateButtons(event);"
+        oninput="updateButtons(event);"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://pyhainformer/content/options.js"/>
+    <hbox>
+        <groupbox>
+            <caption label="Интерфейс"/>
+            <checkbox id="spamokno" label="Выводить всплывающие окно"/>
+            <checkbox id="spisak" label="Показывать непрочитаные темы"/>
+            <separator/>
+            <hbox>
+                <label value="Скин: " control="skins"/>
+                <menulist id="skins">
+                    <menupopup>
+                        <menuitem value="1" label="Старый"/>
+                        <menuitem value="2" label="Новый"/>
+                        <menuitem value="3" label="Однотипный"/>
+                        <menuitem value="4" label="Простой"/>
+                    </menupopup>
+                </menulist>
+            </hbox>
+        </groupbox>
+
+        <groupbox>
+            <caption label="Скины"/>
+            <grid width="250">
+                <columns>
+                    <column flex="1"/>
+                    <column flex="2"/>
+                    <column flex="3"/>
+                    <column flex="4"/>
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Старый"/>
+                        <hbox>
+                            <image src='chrome://pyhainformer/skin/1/load.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 30px;"/>
+                            <image src='chrome://pyhainformer/skin/1/on.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 5px;"/>
+                            <image src='chrome://pyhainformer/skin/1/off.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 5px;"/>
+                            <image src='chrome://pyhainformer/skin/1/error.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 5px;"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Новый"/>
+                        <hbox>
+                            <image src='chrome://pyhainformer/skin/2/load.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 30px;"/>
+                            <image src='chrome://pyhainformer/skin/2/on.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 5px;"/>
+                            <image src='chrome://pyhainformer/skin/2/off.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 5px;"/>
+                            <image src='chrome://pyhainformer/skin/2/error.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 5px;"/>
+                        </hbox>
+                    </row>
+
+                    <row>
+                        <label value="Однотипный"/>
+                        <hbox>
+                            <image src='chrome://pyhainformer/skin/3/load.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 30px;"/>
+                            <image src='chrome://pyhainformer/skin/3/on.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 5px;"/>
+                            <image src='chrome://pyhainformer/skin/3/off.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 5px;"/>
+                            <image src='chrome://pyhainformer/skin/3/error.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 5px;"/>
+                        </hbox>
+                    </row>
+
+
+                    <row>
+                        <label value="Простой"/>
+                        <hbox>
+                            <image src='chrome://pyhainformer/skin/4/load.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 30px;"/>
+                            <image src='chrome://pyhainformer/skin/4/on.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 5px;"/>
+                            <image src='chrome://pyhainformer/skin/4/off.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 5px;"/>
+                            <image src='chrome://pyhainformer/skin/4/error.png' width='16' height='16'
+                                   style="margin: 0px 0px 10px 5px;"/>
+                        </hbox>
+                    </row>
+
+
+                </rows>
+            </grid>
+        </groupbox>
+
+
+    </hbox>
+    <groupbox>
+        <caption>
+            <label value="Панель"/>
+        </caption>
+        <grid>
+            <columns>
+                <column/>
+                <column flex="3"/>
+            </columns>
+            <rows>
+                <row align="center">
+                    <label value="Панель инструментов:"/>
+
+                    <menulist id="vibori" oncommand="izmenim_position();">
+                        <menupopup>
+
+
+                            <menuitem value="main-menubar" label="Панель меню"/>
+                            <menuitem value="toolbar-menubar" label="Панель рядом с меню"/>
+                            <menuitem value="nav-bar" label="Панель навигации"/>
+                            <menuitem value="PersonalToolbar" label="Панель закладок"/>
+                            <menuitem value="status-bar" label="Панель состояния"/>
+
+                        </menupopup>
+                    </menulist>
+
+                </row>
+                <radiogroup id="reminderFox-group-position" onselect="PositionChanged();">
+                    <row align="center">
+                        <spacer width="10px"/>
+                        <radio group="position" label="Всегда распологать в конце" value="-1"/>
+                        <spacer width="30px"/>
+                        <radio group="position" label="Расположить в позиции" value="0"/>
+                        <hbox align="center">
+                            <textbox id="reminderFox-text-position" size="2" maxlength="3" value="0"/>
+                            <label id="kolvopoz"/>
+                        </hbox>
+                    </row>
+                </radiogroup>
+            </rows>
+        </grid>
+    </groupbox>
+
+
+    <groupbox>
+        <caption label="Действия"/>
+        <hbox>
+            <label value="При щелчке на иконке: "/>
+            <menulist id="actionclick">
+                <menupopup>
+                    <menuitem value="0" label="обновлять"/>
+                    <menuitem value="1" label="открывать форум"/>
+                    <menuitem value="2" label="открывать главную"/>
+                    <menuitem value="3" label="открывать непрочитанные"/>
+                </menupopup>
+            </menulist>
+        </hbox>
+        <separator/>
+        <checkbox id="pagatoodna" label="Если сообщение одно открывать его"/>
+    </groupbox>
+    <separator/>
+    <groupbox>
+        <caption label="Системное" style="font-weight:bold"/>
+
+        <hbox align="center">
+            <label value="Обновлять каждые"/>
+            <textbox id="timerzz" style="width:3em;" maxlength="4"/>
+            <label value="минут"/>
+        </hbox>
+    </groupbox>
+
+
+    <separator/>
+    <hbox id="reminderFox-options-footer" align="center">
+        <spacer class="reminderFox-btnspacer" flex="1"/>
+        <button label="Сохранить" default="true" oncommand="saveOptionsAndClose()"/>
+        <button label="Отменить" oncommand="window.close();"/>
+        <button label="Применить" id="reminderFox-apply" disabled="true" oncommand="saveOptions();"/>
+    </hbox>
+    <separator/>
+
+</window>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<overlay id="tsqlOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<script type="application/x-javascript" src="chrome://pyhainformer/content/overlay.js" />
+
+<statusbar id="status-bar">
+	  <statusbarpanel
+	    tooltip="moretip"
+	    insertbefore="statusbar-updates"
+		id="reminderFox-statusLabel"
+	    label="Пыха информер"
+		onclick="gotoURL(event)"
+		context="pyhamenu">
+	  <image id="status-icon" src="chrome://pyhainformer/skin/icon.png" width="16" height="16"  />
+	  <label id="status" value="" />
+	  <label id="sravnenie" value="0" hidden="true"/>
+	  <label id="kolvosravnenie" value="0" hidden="true"/>
+	  <label id="urlik" value="0" hidden="true"/>
+	</statusbarpanel> 
+ 
+<tooltip id="moretip" orient="vertical" position="after_start" noautohide="true" style="background-color: #33DD00;" hidden="true"></tooltip>
+
+</statusbar>   
+
+
+
+
+<popupset id="mainPopupSet">
+    <menupopup id="pyhamenu">
+	
+ <menuitem id ="off" label="Не проверять" type="checkbox" oncommand="off(event.target);" checked="false"/>
+
+  	<menuseparator/>
+      <menuitem label="Настройки" oncommand="pyhaopt()"/>
+		<menuseparator/>
+         <menuitem label="Проверить новые" oncommand="updater();"/>
+	
+    </menupopup>
+ </popupset>
+</overlay>
+
+
