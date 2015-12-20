@@ -7,7 +7,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
 		<em:id>welnax@gmail.com</em:id>
 		<em:name>Пыха информатор</em:name>
-		<em:version>5.0.1</em:version>
+		<em:version>5.0.2</em:version>
 		<em:description>Проверка непрочитанных на пыхе</em:description>
 		<em:creator>welder; sinkler;</em:creator>
 		<em:homepageURL>http://www.pyha.ru/</em:homepageURL>
